@@ -133,6 +133,9 @@
 		0691A37C176F56BD006E906D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0691A37B176F56BD006E906D /* AppDelegate.m */; };
 		0691A37F176F56BD006E906D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0691A37E176F56BD006E906D /* HelloWorldLayer.m */; };
 		0691A382176F56BD006E906D /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0691A381176F56BD006E906D /* IntroLayer.m */; };
+		0691A38A176F56F6006E906D /* rails.png in Resources */ = {isa = PBXBuildFile; fileRef = 0691A388176F56F6006E906D /* rails.png */; };
+		0691A38B176F56F6006E906D /* sinatra.png in Resources */ = {isa = PBXBuildFile; fileRef = 0691A389176F56F6006E906D /* sinatra.png */; };
+		0691A38D176F571D006E906D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0691A38C176F571D006E906D /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -398,6 +401,9 @@
 		0691A37E176F56BD006E906D /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		0691A380176F56BD006E906D /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		0691A381176F56BD006E906D /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		0691A388176F56F6006E906D /* rails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rails.png; path = ../../TestGame/TestGame/rails.png; sourceTree = "<group>"; };
+		0691A389176F56F6006E906D /* sinatra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sinatra.png; path = ../../TestGame/TestGame/sinatra.png; sourceTree = "<group>"; };
+		0691A38C176F571D006E906D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +429,7 @@
 		0691A1E4176F56BB006E906D = {
 			isa = PBXGroup;
 			children = (
+				0691A38C176F571D006E906D /* Default-568h@2x.png */,
 				0691A202176F56BB006E906D /* BearsHeavenForiPhone */,
 				0691A1EF176F56BB006E906D /* Frameworks */,
 				0691A1EE176F56BB006E906D /* Products */,
@@ -472,6 +479,8 @@
 		0691A203176F56BB006E906D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0691A388176F56F6006E906D /* rails.png */,
+				0691A389176F56F6006E906D /* sinatra.png */,
 				0691A204176F56BB006E906D /* Default.png */,
 				0691A206176F56BB006E906D /* Default-Landscape~ipad.png */,
 				0691A208176F56BB006E906D /* fps_images.png */,
@@ -895,6 +904,9 @@
 				0691A219176F56BB006E906D /* Icon@2x.png in Resources */,
 				0691A21C176F56BB006E906D /* iTunesArtwork in Resources */,
 				0691A35A176F56BD006E906D /* ChangeLog in Resources */,
+				0691A38A176F56F6006E906D /* rails.png in Resources */,
+				0691A38B176F56F6006E906D /* sinatra.png in Resources */,
+				0691A38D176F571D006E906D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
