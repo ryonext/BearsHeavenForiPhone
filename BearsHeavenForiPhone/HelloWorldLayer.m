@@ -45,7 +45,7 @@
         [self addChild:rails];
         
         sinatra = [[CCSprite alloc]initWithFile:@"sinatra.png"];
-        sinatra.position = ccp(480/4*3, 320/2);
+        sinatra.position = ccp(480/4, 320/2);
         [self addChild:sinatra];
         
         [self schedule:@selector(nextFrame:)];
