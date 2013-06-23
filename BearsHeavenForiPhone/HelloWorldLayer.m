@@ -45,12 +45,13 @@
         [self addChild:rails];
         
         sinatra = [[CCSprite alloc]initWithFile:@"sinatra.png"];
-        sinatra.position = ccp(480/4, 320/2);
+        sinatra.position = ccp(480/4, 320);
         [self addChild:sinatra];
         
         [self schedule:@selector(nextFrame:)];
         self.isTouchEnabled = YES;
 	}
+    [self setUpStringButton];
 	return self;
 }
 
@@ -69,51 +70,67 @@
 - (void) nextFrame:(ccTime)dt {
 //    rails.position = ccp(rails.position.x + 100*dt, rails.position.y);
     
-//    CGSize winSize = [[CCDirector sharedDirector]winSize];
-//    if (rails.position.x > winSize.width + rails.contentSize.width / 2) {
-//        CGPoint p = rails.position;
-//
-//        p.x = 0 - rails.contentSize.width / 2;
-//        rails.position = p;
-//    }
+    CGSize winSize = [[CCDirector sharedDirector]winSize];
+    if (rails.position.x > winSize.width/* + rails.contentSize.width / 2*/) {
+        CGPoint p = rails.position;
+
+        p.x = 0 - rails.contentSize.width / 2;
+        rails.position = p;
+    }
+    else if(rails.position.x < 0 - rails.contentSize.width / 2){
+        CGPoint p = rails.position;
+        
+        p.x = winSize.width;
+        rails.position = p;
+    }
 }
 
 -(void) registerWithTouchDispatcher{
     [[CCTouchDispatcher sharedDispatcher]addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
-- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
-}
-
--(void)sample_move{
-    
-}
-
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
-    [rails stopAllActions];
-    
-    CGPoint location = [self convertTouchToNodeSpace: touch];
-    int moveX = 0;
-    if (location.x - rails.position.x > 0){
-        // →移動
-        moveX = 50;
-        
-    }else{
-        // ←移動
-        moveX = -50;
-    }
-    CGPoint newPoint = CGPointMake(rails.position.x + moveX, location.y);
-    id move = [CCJumpTo  actionWithDuration:1 position:newPoint height:50 jumps:2];
-    [rails runAction:move];
     return YES;
 }
 
+- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
+}
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     //    id scene = [HelloWorldLayer scene];
     //    id transition = [CCTransitionFade transitionWithDuration:1.0f scene:scene];
     //    [[CCDirector sharedDirector] replaceScene:transition];
 }
 
+
+- (void)setUpStringButton
+{
+    CCMenuItem *itemRight = [CCMenuItemFont itemWithString:@"→" target:self selector:@selector(pushStringRightButton:)];
+    itemRight.tag = 101;
+
+    CCMenuItem *itemLeft = [CCMenuItemFont itemWithString:@"←" target:self selector:@selector(pushStringLeftButton:)];
+    itemRight.tag = 102;
+    
+    CCMenu *menu = [CCMenu menuWithItems:itemLeft, itemRight, nil];
+    [menu alignItemsHorizontallyWithPadding:20];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [menu setPosition:ccp( size.width/2, size.height/2-100)];
+    [self addChild:menu];
+}
+
+- (void)pushStringLeftButton:(id)sender
+{
+    CGPoint newPoint = CGPointMake(rails.position.x - 50, rails.position.y);
+    id move = [CCJumpTo  actionWithDuration:1 position:newPoint height:50 jumps:2];
+    [rails runAction:move];
+}
+
+
+- (void)pushStringRightButton:(id)sender
+{
+    CGPoint newPoint = CGPointMake(rails.position.x + 50, rails.position.y);
+    id move = [CCJumpTo  actionWithDuration:1 position:newPoint height:50 jumps:2];
+    [rails runAction:move];
+}
 
 #pragma mark GameKit delegate
 
