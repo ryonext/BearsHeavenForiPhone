@@ -83,6 +83,15 @@
         p.x = winSize.width;
         rails.position = p;
     }
+
+    if (itemR.isSelected) {
+        rails.position = ccp(rails.position.x + 100 * dt, rails.position.y );
+//        [self moveRight];
+    }
+    if (itemL.isSelected){
+        rails.position = ccp(rails.position.x - 100 * dt, rails.position.y );
+//        [self moveLeft];
+    }
 }
 
 -(void) registerWithTouchDispatcher{
@@ -94,6 +103,7 @@
 }
 
 - (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
+    NSLog(@"touchmove");
 }
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     //    id scene = [HelloWorldLayer scene];
@@ -101,36 +111,59 @@
     //    [[CCDirector sharedDirector] replaceScene:transition];
 }
 
-
 - (void)setUpStringButton
 {
     CCMenuItem *itemRight = [CCMenuItemFont itemWithString:@"→" target:self selector:@selector(pushStringRightButton:)];
     itemRight.tag = 101;
+    itemRight.scale = 2;
+    
+    itemR = itemRight;
 
     CCMenuItem *itemLeft = [CCMenuItemFont itemWithString:@"←" target:self selector:@selector(pushStringLeftButton:)];
     itemRight.tag = 102;
+    itemLeft.scale = 2;
+    itemL = itemLeft;
     
-    CCMenu *menu = [CCMenu menuWithItems:itemLeft, itemRight, nil];
+    CCMenuItem *itemJump = [CCMenuItemFont itemWithString:@"○" target:self selector:@selector(pushStringJump:)];
+    itemJump.scale = 2;
+    
+    CCMenu *menu = [CCMenu menuWithItems:itemLeft, itemRight, itemJump, nil];
     [menu alignItemsHorizontallyWithPadding:20];
     CGSize size = [[CCDirector sharedDirector] winSize];
-    [menu setPosition:ccp( size.width/2, size.height/2-100)];
+    [menu setPosition:ccp( size.width/2, size.height/2 - 200)];
     [self addChild:menu];
 }
 
+CCMenuItem *itemR = nil;
+CCMenuItem *itemL = nil;
+
 - (void)pushStringLeftButton:(id)sender
 {
+//    [self moveLeft];
+}
+
+- (void)pushStringRightButton:(id)sender
+{
+//    [self moveRight];
+}
+
+- (void)pushStringJump:(id)sender
+{
+    [rails runAction:[CCJumpTo actionWithDuration:1 position:ccp(rails.position.x, rails.position.y) height:50 jumps:1]];
+}
+
+- (void)moveRight{
+    CGPoint newPoint = CGPointMake(rails.position.x + 50, rails.position.y);
+//    id move = [CCJumpTo  actionWithDuration:1 position:newPoint height:25 jumps:2];
+    [rails runAction: [CCMoveBy actionWithDuration:0.5 position:CGPointMake(50, 0)]];
+}
+
+- (void)moveLeft{
     CGPoint newPoint = CGPointMake(rails.position.x - 50, rails.position.y);
     id move = [CCJumpTo  actionWithDuration:1 position:newPoint height:50 jumps:2];
     [rails runAction:move];
 }
 
-
-- (void)pushStringRightButton:(id)sender
-{
-    CGPoint newPoint = CGPointMake(rails.position.x + 50, rails.position.y);
-    id move = [CCJumpTo  actionWithDuration:1 position:newPoint height:50 jumps:2];
-    [rails runAction:move];
-}
 
 #pragma mark GameKit delegate
 
