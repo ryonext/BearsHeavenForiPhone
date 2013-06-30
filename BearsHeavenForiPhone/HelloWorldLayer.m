@@ -61,9 +61,9 @@
     
     
     SneakyJoystickSkinnedBase *skinjoystick = [[SneakyJoystickSkinnedBase alloc] init];
-    skinjoystick.position = ccp(100, 100);
+    skinjoystick.position = ccp(50, 100);
     
-    skinjoystick.backgroundSprite = [ColoredCircleSprite circleWithColor:ccc4(255, 0, 0, 128) radius:64];;//スプライトを指定
+    skinjoystick.backgroundSprite = [ColoredCircleSprite circleWithColor:ccc4(255, 0, 0, 128) radius:48];;//スプライトを指定
     skinjoystick.thumbSprite = [ColoredCircleSprite circleWithColor:ccc4(0, 0, 255, 200) radius:16];;//スプライトを指定
     skinjoystick.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0,0,70,70)];
     
@@ -117,7 +117,7 @@
     
     SneakyJoystickSkinnedBase *joy = (SneakyJoystickSkinnedBase *)[self getChildByTag:30];
     CGPoint scaledVelocity = ccpMult(joy.joystick.velocity,  10);
-    rails.position = ccp(rails.position.x + (30 * scaledVelocity.x) * dt, rails.position.y );
+    rails.position = ccp(rails.position.x + (20 * scaledVelocity.x) * dt, rails.position.y );
 
     SneakyButtonSkinnedBase *button = (SneakyButtonSkinnedBase *)[self getChildByTag:31];
     NSLog(@"%d", button.button.active);
@@ -147,7 +147,7 @@
 }
 
 - (void)jump:(float) velocity{
-    [rails runAction:[CCJumpTo actionWithDuration:1 position:ccp(rails.position.x + (30 * velocity), rails.position.y) height:50 jumps:1]];
+    [rails runAction:[CCJumpTo actionWithDuration:1 position:ccp(rails.position.x + (20 * velocity), rails.position.y) height:50 jumps:1]];
 }
 
 #pragma mark GameKit delegate
