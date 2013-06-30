@@ -13,6 +13,12 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 
+#import "SneakyJoystickSkinnedBase.h"
+#import "SneakyJoystick.h"
+#import "ColoredCircleSprite.h"
+#import "SneakyButtonSkinnedBase.h"
+#import "SneakyButton.h"
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -41,7 +47,7 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
         rails = [[CCSprite alloc]initWithFile:@"rails.png"];
-        rails.position = ccp(480/2, 320/2);
+        rails.position = ccp(480/2, 320/3 * 2);
         [self addChild:rails];
         
         sinatra = [[CCSprite alloc]initWithFile:@"sinatra.png"];
@@ -49,9 +55,34 @@
         [self addChild:sinatra];
         
         [self schedule:@selector(nextFrame:)];
-        self.isTouchEnabled = YES;
+//        self.isTouchEnabled = YES;
 	}
     [self setUpStringButton];
+    
+    
+    SneakyJoystickSkinnedBase *skinjoystick = [[SneakyJoystickSkinnedBase alloc] init];
+    skinjoystick.position = ccp(100, 100);
+    
+    skinjoystick.backgroundSprite = [ColoredCircleSprite circleWithColor:ccc4(255, 0, 0, 128) radius:64];;//スプライトを指定
+    skinjoystick.thumbSprite = [ColoredCircleSprite circleWithColor:ccc4(0, 0, 255, 200) radius:16];;//スプライトを指定
+    skinjoystick.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0,0,70,70)];
+    
+    SneakyJoystick *joystick = skinjoystick.joystick;
+    joystick.autoCenter = YES; //自動的に真ん中に戻すかどうか
+    joystick.hasDeadzone = YES;//ジョイスティックの反応しないエリアを作るかどうか
+    joystick.deadRadius = 10;//反応しないエリアの半径を指定
+    [self addChild:skinjoystick z:0 tag:30];
+    
+    
+    
+    SneakyButtonSkinnedBase *skinAttackButton = [[SneakyButtonSkinnedBase alloc] init];
+    skinAttackButton.position = ccp(250,100);
+    skinAttackButton.defaultSprite = [ColoredCircleSprite circleWithColor:ccc4(255, 0, 0, 128) radius:32];//基本のスプライト
+    skinAttackButton.activatedSprite = [ColoredCircleSprite circleWithColor:ccc4(255, 0, 0, 128) radius:32];//ボタンを押している時のスプライト
+    skinAttackButton.pressSprite = [ColoredCircleSprite circleWithColor:ccc4(255, 0, 0, 128) radius:32];//ボタンを離した時のスプライト
+    skinAttackButton.button = [[SneakyButton alloc] initWithRect:CGRectMake(0, 0, 64, 64)];
+    [self addChild:skinAttackButton z:0 tag:31];
+    
 	return self;
 }
 
@@ -83,14 +114,15 @@
         p.x = winSize.width;
         rails.position = p;
     }
+    
+    SneakyJoystickSkinnedBase *joy = (SneakyJoystickSkinnedBase *)[self getChildByTag:30];
+    CGPoint scaledVelocity = ccpMult(joy.joystick.velocity,  10);
+    rails.position = ccp(rails.position.x + (30 * scaledVelocity.x) * dt, rails.position.y );
 
-    if (itemR.isSelected) {
-        rails.position = ccp(rails.position.x + 100 * dt, rails.position.y );
-//        [self moveRight];
-    }
-    if (itemL.isSelected){
-        rails.position = ccp(rails.position.x - 100 * dt, rails.position.y );
-//        [self moveLeft];
+    SneakyButtonSkinnedBase *button = (SneakyButtonSkinnedBase *)[self getChildByTag:31];
+    NSLog(@"%d", button.button.active);
+    if (button.button.active) {
+        [self jump:scaledVelocity.x];
     }
 }
 
@@ -103,7 +135,6 @@
 }
 
 - (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
-    NSLog(@"touchmove");
 }
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     //    id scene = [HelloWorldLayer scene];
@@ -113,57 +144,11 @@
 
 - (void)setUpStringButton
 {
-    CCMenuItem *itemRight = [CCMenuItemFont itemWithString:@"→" target:self selector:@selector(pushStringRightButton:)];
-    itemRight.tag = 101;
-    itemRight.scale = 2;
-    
-    itemR = itemRight;
-
-    CCMenuItem *itemLeft = [CCMenuItemFont itemWithString:@"←" target:self selector:@selector(pushStringLeftButton:)];
-    itemRight.tag = 102;
-    itemLeft.scale = 2;
-    itemL = itemLeft;
-    
-    CCMenuItem *itemJump = [CCMenuItemFont itemWithString:@"○" target:self selector:@selector(pushStringJump:)];
-    itemJump.scale = 2;
-    
-    CCMenu *menu = [CCMenu menuWithItems:itemLeft, itemRight, itemJump, nil];
-    [menu alignItemsHorizontallyWithPadding:20];
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    [menu setPosition:ccp( size.width/2, size.height/2 - 200)];
-    [self addChild:menu];
 }
 
-CCMenuItem *itemR = nil;
-CCMenuItem *itemL = nil;
-
-- (void)pushStringLeftButton:(id)sender
-{
-//    [self moveLeft];
+- (void)jump:(float) velocity{
+    [rails runAction:[CCJumpTo actionWithDuration:1 position:ccp(rails.position.x + (30 * velocity), rails.position.y) height:50 jumps:1]];
 }
-
-- (void)pushStringRightButton:(id)sender
-{
-//    [self moveRight];
-}
-
-- (void)pushStringJump:(id)sender
-{
-    [rails runAction:[CCJumpTo actionWithDuration:1 position:ccp(rails.position.x, rails.position.y) height:50 jumps:1]];
-}
-
-- (void)moveRight{
-    CGPoint newPoint = CGPointMake(rails.position.x + 50, rails.position.y);
-//    id move = [CCJumpTo  actionWithDuration:1 position:newPoint height:25 jumps:2];
-    [rails runAction: [CCMoveBy actionWithDuration:0.5 position:CGPointMake(50, 0)]];
-}
-
-- (void)moveLeft{
-    CGPoint newPoint = CGPointMake(rails.position.x - 50, rails.position.y);
-    id move = [CCJumpTo  actionWithDuration:1 position:newPoint height:50 jumps:2];
-    [rails runAction:move];
-}
-
 
 #pragma mark GameKit delegate
 

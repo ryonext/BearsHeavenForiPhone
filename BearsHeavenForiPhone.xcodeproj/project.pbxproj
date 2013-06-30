@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06290C81177F1B8E00D67BD7 /* CCNavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06290C6C177F1B8E00D67BD7 /* CCNavigationViewController.mm */; };
+		06290C82177F1B8E00D67BD7 /* ColoredCircleSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 06290C6E177F1B8E00D67BD7 /* ColoredCircleSprite.m */; };
+		06290C83177F1B8E00D67BD7 /* ColoredSquareSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 06290C70177F1B8E00D67BD7 /* ColoredSquareSprite.m */; };
+		06290C85177F1B8E00D67BD7 /* SneakyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06290C74177F1B8E00D67BD7 /* SneakyButton.m */; };
+		06290C86177F1B8E00D67BD7 /* SneakyButtonSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 06290C76177F1B8E00D67BD7 /* SneakyButtonSkinnedBase.m */; };
+		06290C88177F1B8E00D67BD7 /* SneakyJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 06290C7A177F1B8E00D67BD7 /* SneakyJoystick.m */; };
+		06290C89177F1B8E00D67BD7 /* SneakyJoystickSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 06290C7C177F1B8E00D67BD7 /* SneakyJoystickSkinnedBase.m */; };
 		0691A1F1176F56BB006E906D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0691A1F0176F56BB006E906D /* QuartzCore.framework */; };
 		0691A1F3176F56BB006E906D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0691A1F2176F56BB006E906D /* OpenGLES.framework */; };
 		0691A1F5176F56BB006E906D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0691A1F4176F56BB006E906D /* OpenAL.framework */; };
@@ -139,6 +146,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06290C6B177F1B8E00D67BD7 /* CCNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNavigationViewController.h; sourceTree = "<group>"; };
+		06290C6C177F1B8E00D67BD7 /* CCNavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCNavigationViewController.mm; sourceTree = "<group>"; };
+		06290C6D177F1B8E00D67BD7 /* ColoredCircleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredCircleSprite.h; sourceTree = "<group>"; };
+		06290C6E177F1B8E00D67BD7 /* ColoredCircleSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredCircleSprite.m; sourceTree = "<group>"; };
+		06290C6F177F1B8E00D67BD7 /* ColoredSquareSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredSquareSprite.h; sourceTree = "<group>"; };
+		06290C70177F1B8E00D67BD7 /* ColoredSquareSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredSquareSprite.m; sourceTree = "<group>"; };
+		06290C73177F1B8E00D67BD7 /* SneakyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyButton.h; sourceTree = "<group>"; };
+		06290C74177F1B8E00D67BD7 /* SneakyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyButton.m; sourceTree = "<group>"; };
+		06290C75177F1B8E00D67BD7 /* SneakyButtonSkinnedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyButtonSkinnedBase.h; sourceTree = "<group>"; };
+		06290C76177F1B8E00D67BD7 /* SneakyButtonSkinnedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyButtonSkinnedBase.m; sourceTree = "<group>"; };
+		06290C79177F1B8E00D67BD7 /* SneakyJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyJoystick.h; sourceTree = "<group>"; };
+		06290C7A177F1B8E00D67BD7 /* SneakyJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystick.m; sourceTree = "<group>"; };
+		06290C7B177F1B8E00D67BD7 /* SneakyJoystickSkinnedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyJoystickSkinnedBase.h; sourceTree = "<group>"; };
+		06290C7C177F1B8E00D67BD7 /* SneakyJoystickSkinnedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystickSkinnedBase.m; sourceTree = "<group>"; };
 		0691A1ED176F56BB006E906D /* BearsHeavenForiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BearsHeavenForiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0691A1F0176F56BB006E906D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0691A1F2176F56BB006E906D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -426,9 +447,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06290C69177F1B8E00D67BD7 /* SneakyInput */ = {
+			isa = PBXGroup;
+			children = (
+				06290C6A177F1B8E00D67BD7 /* Classes */,
+			);
+			name = SneakyInput;
+			path = BearsHeavenForiPhone/SneakyInput;
+			sourceTree = "<group>";
+		};
+		06290C6A177F1B8E00D67BD7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				06290C6B177F1B8E00D67BD7 /* CCNavigationViewController.h */,
+				06290C6C177F1B8E00D67BD7 /* CCNavigationViewController.mm */,
+				06290C6D177F1B8E00D67BD7 /* ColoredCircleSprite.h */,
+				06290C6E177F1B8E00D67BD7 /* ColoredCircleSprite.m */,
+				06290C6F177F1B8E00D67BD7 /* ColoredSquareSprite.h */,
+				06290C70177F1B8E00D67BD7 /* ColoredSquareSprite.m */,
+				06290C73177F1B8E00D67BD7 /* SneakyButton.h */,
+				06290C74177F1B8E00D67BD7 /* SneakyButton.m */,
+				06290C75177F1B8E00D67BD7 /* SneakyButtonSkinnedBase.h */,
+				06290C76177F1B8E00D67BD7 /* SneakyButtonSkinnedBase.m */,
+				06290C79177F1B8E00D67BD7 /* SneakyJoystick.h */,
+				06290C7A177F1B8E00D67BD7 /* SneakyJoystick.m */,
+				06290C7B177F1B8E00D67BD7 /* SneakyJoystickSkinnedBase.h */,
+				06290C7C177F1B8E00D67BD7 /* SneakyJoystickSkinnedBase.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		0691A1E4176F56BB006E906D = {
 			isa = PBXGroup;
 			children = (
+				06290C69177F1B8E00D67BD7 /* SneakyInput */,
 				0691A38C176F571D006E906D /* Default-568h@2x.png */,
 				0691A202176F56BB006E906D /* BearsHeavenForiPhone */,
 				0691A1EF176F56BB006E906D /* Frameworks */,
@@ -1021,6 +1073,13 @@
 				0691A37C176F56BD006E906D /* AppDelegate.m in Sources */,
 				0691A37F176F56BD006E906D /* HelloWorldLayer.m in Sources */,
 				0691A382176F56BD006E906D /* IntroLayer.m in Sources */,
+				06290C81177F1B8E00D67BD7 /* CCNavigationViewController.mm in Sources */,
+				06290C82177F1B8E00D67BD7 /* ColoredCircleSprite.m in Sources */,
+				06290C83177F1B8E00D67BD7 /* ColoredSquareSprite.m in Sources */,
+				06290C85177F1B8E00D67BD7 /* SneakyButton.m in Sources */,
+				06290C86177F1B8E00D67BD7 /* SneakyButtonSkinnedBase.m in Sources */,
+				06290C88177F1B8E00D67BD7 /* SneakyJoystick.m in Sources */,
+				06290C89177F1B8E00D67BD7 /* SneakyJoystickSkinnedBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1124,6 +1183,7 @@
 				0691A387176F56BD006E906D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
